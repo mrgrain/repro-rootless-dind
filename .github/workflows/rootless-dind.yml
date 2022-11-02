@@ -32,3 +32,12 @@ jobs:
       - run: whoami
       - run: id
       - run: docker ps
+  fails-with-named-group:
+    runs-on: ubuntu-latest
+    container:
+      image: jsii/superchain:1-buster-slim-node14
+      options: --group-add docker
+    steps:
+      - run: whoami
+      - run: id
+      - run: docker ps
