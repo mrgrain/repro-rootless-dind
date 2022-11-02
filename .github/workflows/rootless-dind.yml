@@ -11,6 +11,8 @@ jobs:
     container:
       image: jsii/superchain:1-buster-slim-node14
     steps:
+      - run: whoami
+      - run: id
       - run: docker ps
   works-with-root:
     runs-on: ubuntu-latest
@@ -18,6 +20,8 @@ jobs:
       image: jsii/superchain:1-buster-slim-node14
       options: --user root:root
     steps:
+      - run: whoami
+      - run: id
       - run: docker ps
   works-with-group:
     runs-on: ubuntu-latest
@@ -25,4 +29,6 @@ jobs:
       image: jsii/superchain:1-buster-slim-node14
       options: --group-add 121
     steps:
+      - run: whoami
+      - run: id
       - run: docker ps
