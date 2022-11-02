@@ -1,0 +1,28 @@
+
+name: reproduction
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+jobs:
+  fails-rootless:
+    runs-on: ubuntu-latest
+    container:
+      image: jsii/superchain:1-buster-slim-node14
+    steps:
+      - run: docker ps
+  works-with-root:
+    runs-on: ubuntu-latest
+    container:
+      image: jsii/superchain:1-buster-slim-node14
+      options: --user root:root
+    steps:
+      - run: docker ps
+  works-with-group:
+    runs-on: ubuntu-latest
+    container:
+      image: jsii/superchain:1-buster-slim-node14
+      options: --group-add 121
+    steps:
+      - run: docker ps
