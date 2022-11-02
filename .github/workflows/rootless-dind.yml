@@ -36,6 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: jsii/superchain:1-buster-slim-node14
+      # this fails because the name is resolved inside the container, not on the host, thus adding the wrong group
       options: --group-add docker
     steps:
       - run: whoami
